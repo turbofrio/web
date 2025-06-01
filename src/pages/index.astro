@@ -1,7 +1,32 @@
 ---
+import Button from "@/components/button.astro"
 import RootLayout from "../layouts/root-layout.astro"
+import MenuIcon from "@icons/menu.svg"
+import WhatsAppIcon from "@icons/whatsapp-logo.svg"
+import ChevronRightIcon from "@icons/chevron-right.svg"
 ---
 
 <RootLayout title="Turbo Frio">
   <h1>Astro</h1>
+  <p>
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit
+    numquam dolores, ipsa dolorem ut at ad. Nulla suscipit mollitia veniam?
+    Possimus, saepe voluptate natus facere eum at. Consequatur, harum
+    doloremque!
+  </p>
+
+  <Button> primary </Button>
+  <Button size="md" variant="secondary"> secondary </Button>
+  <Button size="md" variant="outline"> outline </Button>
+  <Button size="icon" variant="ghost">
+    <MenuIcon />
+  </Button>
+  <Button>
+    Depois do texto
+    <ChevronRightIcon />
+  </Button>
+  <Button size="md" variant="secondary">
+    <WhatsAppIcon />
+    Antes do texto
+  </Button>
 </RootLayout>

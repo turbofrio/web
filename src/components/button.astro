@@ -1,0 +1,103 @@
+---
+type Props = {
+  children: any
+  class?: string
+  size?: "md" | "lg" | "icon"
+  variant?: "primary" | "secondary" | "outline" | "ghost"
+}
+
+const { class: className, size = "lg", variant = "primary" } = Astro.props
+---
+
+<button class:list={[size, variant, className]}>
+  <slot />
+</button>
+
+<style>
+  button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border: none;
+    border-radius: 8px;
+    flex-shrink: 0;
+    gap: 10px;
+
+    cursor: pointer;
+    font-size: 1.25rem;
+    font-weight: 600;
+    line-height: 1;
+    white-space: nowrap;
+
+    transition: all 150ms;
+
+    & svg {
+      flex-shrink: 0;
+      pointer-events: none;
+    }
+
+    & svg:not([class]) {
+      height: 14px;
+      width: 14px;
+    }
+  }
+
+  button:active {
+    translate: 1px 1px;
+  }
+
+  .primary {
+    background-color: var(--sky-600);
+    color: white;
+  }
+
+  .primary:hover {
+    background-color: color-mix(in lab, var(--sky-600) 90%, transparent);
+  }
+
+  .secondary {
+    background-color: var(--teal-500);
+    color: white;
+  }
+
+  .secondary:hover {
+    background-color: color-mix(in lab, var(--teal-500) 90%, transparent);
+  }
+
+  .outline {
+    background-color: white;
+    border: solid 1px var(--teal-500);
+    color: var(--teal-500);
+  }
+
+  .outline:hover {
+    background-color: var(--neutral-100);
+  }
+
+  .ghost {
+    background-color: transparent;
+    border: solid 1px var(--gray-200);
+    box-shadow: 0 1px 1px color-mix(in lab, black 5%, transparent);
+    color: var(--gray-800);
+  }
+
+  .ghost:hover {
+    background-color: var(--neutral-100);
+  }
+
+  .md {
+    height: 46px;
+    padding: 14px 12px;
+  }
+
+  .lg {
+    height: 68px;
+    padding: 22px 32px;
+  }
+
+  .icon {
+    height: 38px;
+    width: 38px;
+  }
+</style>
