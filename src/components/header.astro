@@ -1,0 +1,97 @@
+---
+import TurboFrioLogo from "@icons/turbo-frio-logo.svg"
+import MenuIcon from "@icons/menu.svg"
+import WhatsappIcon from "@icons/whatsapp-logo.svg"
+import PhoneCallIcon from "@icons/phone-call.svg"
+import Button from "./button.astro"
+import MobileNav from "./mobile-nav.astro"
+import NavLinks from "./nav-links.astro"
+---
+
+<header>
+  <div class="container">
+    <TurboFrioLogo aria-label="Turbo Frio" />
+
+    <Button
+      aria-label="open navigation menu"
+      class="menu-button"
+      size="icon"
+      variant="ghost"
+      popovertarget="mobile-nav"
+    >
+      <MenuIcon aria-hidden />
+    </Button>
+
+    <MobileNav />
+
+    <div class="desktop-nav">
+      <NavLinks />
+    </div>
+
+    <ul class="desktop-nav">
+      <li class="tel">
+        <PhoneCallIcon aria-hidden />
+        <a class="tel" href="#"> (82) 99812-8254 </a>
+      </li>
+
+      <li>
+        <Button size="md" variant="secondary">
+          <WhatsappIcon aria-hidden />
+          Contato via whatsapp
+        </Button>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<style>
+  header {
+    backdrop-filter: blur(8px);
+    background-color: color-mix(in lab, white 40%, transparent);
+    border-bottom: solid 1px var(--gray-200);
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    padding: 28px 16px;
+  }
+
+  .desktop-nav {
+    display: none;
+  }
+
+  ul {
+    display: flex;
+    align-items: center;
+
+    gap: 20px;
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+  }
+
+  .tel {
+    color: var(--sky-600);
+    font-size: 0.875rem;
+    text-underline-offset: 4px;
+  }
+
+  @media (min-width: 1024px) {
+    header {
+      position: sticky;
+      top: 0;
+    }
+
+    .menu-button {
+      display: none;
+    }
+
+    .desktop-nav {
+      display: flex;
+    }
+  }
+</style>
