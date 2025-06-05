@@ -4,8 +4,21 @@ import MenuIcon from "@icons/menu.svg"
 import WhatsappIcon from "@icons/whatsapp-logo.svg"
 import PhoneCallIcon from "@icons/phone-call.svg"
 import Button from "./button.astro"
-import MobileNav from "./mobile-nav.astro"
-import NavLinks from "./nav-links.astro"
+
+const links = [
+  {
+    label: "Sobre",
+    link: "#about",
+  },
+  {
+    label: "Serviços",
+    link: "#services",
+  },
+  {
+    label: "Contato",
+    link: "#contact",
+  },
+]
 ---
 
 <header>
@@ -22,10 +35,41 @@ import NavLinks from "./nav-links.astro"
       <MenuIcon aria-hidden />
     </Button>
 
-    <MobileNav />
+    <dialog id="mobile-nav" popover>
+      <nav>
+        <ul>
+          {
+            links.map(({ label, link }) => (
+              <li>
+                <a id={`link-${link}`} href={link}>
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
+
+      <Button size="md" variant="secondary">
+        <WhatsappIcon aria-hidden />
+        Contato via whatsapp
+      </Button>
+    </dialog>
 
     <div class="desktop-nav">
-      <NavLinks />
+      <nav>
+        <ul>
+          {
+            links.map(({ label, link }) => (
+              <li>
+                <a id={`link-${link}`} href={link}>
+                  {label}
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </nav>
     </div>
 
     <ul class="desktop-nav">
@@ -42,6 +86,32 @@ import NavLinks from "./nav-links.astro"
       </li>
     </ul>
   </div>
+
+  <script>
+    const sections = document.querySelectorAll("main [id]")
+    const navLinks = document.querySelectorAll("nav a")
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const id = entry.target.id
+          const activeLinks = document.querySelectorAll(`[id="link-#${id}"]`)
+
+          if (entry.isIntersecting) {
+            navLinks.forEach((link) => link.classList.remove("active"))
+            activeLinks.forEach((link) => link.classList.add("active"))
+          }
+        })
+      },
+      {
+        root: null,
+        rootMargin: "0px",
+        threshold: 0.6, // the element must be at least 60% visible to be considered active.
+      }
+    )
+
+    sections.forEach((section) => observer.observe(section))
+  </script>
 </header>
 
 <style>
@@ -59,19 +129,56 @@ import NavLinks from "./nav-links.astro"
     padding: 28px 16px;
   }
 
-  .desktop-nav {
-    display: none;
+  dialog:popover-open {
+    background-color: white;
+    border: solid 1px var(--gray-200);
+    border-radius: 12px;
+    box-shadow:
+      0 4px 6px color-mix(in lab, black 10%, transparent),
+      0 10px 15px color-mix(in lab, black 10%, transparent);
+    margin: 72px 16px 0 auto;
+    width: min(calc(100vw - 16px * 2), 356px);
+    padding: 16px 20px;
+  }
+
+  dialog > button {
+    margin-top: 8px;
+    width: 100%;
   }
 
   ul {
     display: flex;
-    align-items: center;
-
-    gap: 20px;
+    flex-direction: column;
+    list-style: none;
     margin: 0;
     padding: 0;
+  }
 
-    list-style: none;
+  ul.desktop-nav {
+    align-items: center;
+    gap: 20px;
+  }
+
+  .desktop-nav,
+  ul.desktop-nav {
+    display: none;
+  }
+
+  a:not([class="tel"]) {
+    color: var(--gray-800);
+    display: inline-block;
+
+    padding-block: 6px;
+    width: 100%;
+
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-decoration: none;
+  }
+
+  a.active {
+    color: var(--blue-300);
+    font-weight: 700;
   }
 
   .tel {
@@ -80,17 +187,39 @@ import NavLinks from "./nav-links.astro"
     text-underline-offset: 4px;
   }
 
+  @media (min-width: 640px) {
+    dialog:popover-open {
+      margin-right: calc((100vw - 640px) / 2 + 16px);
+    }
+  }
+
+  @media (min-width: 768px) {
+    dialog:popover-open {
+      margin-right: calc((100vw - 768px) / 2 + 16px);
+    }
+  }
+
   @media (min-width: 1024px) {
     header {
       position: sticky;
       top: 0;
     }
 
+    dialog {
+      display: none;
+    }
+
     .menu-button {
       display: none;
     }
 
-    .desktop-nav {
+    ul {
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    .desktop-nav,
+    ul.desktop-nav {
       display: flex;
     }
   }
