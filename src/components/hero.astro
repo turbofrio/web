@@ -37,19 +37,14 @@ import mansoryImage from "@images/mansory.png"
   }
 
   .container {
-    display: grid;
-    grid-template-areas:
-      "content"
-      "image";
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
     padding: 64px 16px;
   }
 
-  .container > div {
-    grid-area: content;
-  }
-
   h1 {
+    line-height: 1.2;
     margin-bottom: 16px;
   }
 
@@ -59,36 +54,28 @@ import mansoryImage from "@images/mansory.png"
 
   button {
     border-radius: 24px;
-    margin-bottom: 40px;
   }
 
   picture {
-    grid-area: image;
     margin-inline: auto;
   }
 
   @media (min-width: 1024px) {
     .container {
-      column-gap: 40px;
-      grid-template-columns: repeat(2, max-content);
-      grid-template-areas:
-        ". image"
-        "content image"
-        ". image";
-      justify-items: start;
+      flex-direction: row;
       justify-content: center;
       align-items: center;
-      align-content: center;
+
+      gap: 56px;
       padding-block: 80px;
     }
 
     .container > div {
-      justify-self: end;
-      max-width: 457px;
+      max-width: 401px;
     }
 
     picture {
-      margin-inline: none;
+      margin-inline: 0;
     }
 
     p {
