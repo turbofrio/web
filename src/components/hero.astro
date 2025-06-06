@@ -1,0 +1,100 @@
+---
+import ChevronRightIcon from "@icons/chevron-right.svg"
+import Button from "./button.astro"
+import { Picture } from "astro:assets"
+import mansoryImage from "@images/mansory.png"
+---
+
+<div id="about">
+  <div class="container">
+    <div>
+      <h1>Instalação e Manutenção de Ar Condicionado e Geladeiras</h1>
+
+      <p>
+        Temos os melhores profissionais especialistas em climatização e
+        refrigeração.
+      </p>
+
+      <Button>
+        Entrar em contato
+        <ChevronRightIcon aria-hidden />
+      </Button>
+    </div>
+
+    <Picture
+      src={mansoryImage}
+      loading="eager"
+      alt="Profissionais reparando sistemas de climatização e de refrigeração"
+    />
+  </div>
+</div>
+
+<style>
+  #about {
+    background: linear-gradient(white, hsla(0, 0%, 100%, 0.1)),
+      url("../assets/images/background-pattern.png"), var(--neutral-100);
+    border-bottom: solid 1px var(--gray-200);
+  }
+
+  .container {
+    display: grid;
+    grid-template-areas:
+      "content"
+      "image";
+    grid-template-columns: 1fr;
+    padding: 64px 16px;
+  }
+
+  .container > div {
+    grid-area: content;
+  }
+
+  h1 {
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-bottom: 40px;
+  }
+
+  button {
+    border-radius: 24px;
+    margin-bottom: 40px;
+  }
+
+  picture {
+    grid-area: image;
+    margin-inline: auto;
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      column-gap: 40px;
+      grid-template-columns: repeat(2, max-content);
+      grid-template-areas:
+        ". image"
+        "content image"
+        ". image";
+      justify-items: start;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      padding-block: 80px;
+    }
+
+    .container > div {
+      justify-self: end;
+      max-width: 457px;
+    }
+
+    picture {
+      margin-inline: none;
+    }
+
+    p {
+      font-size: 1.5rem;
+      font-weight: 400;
+      line-height: 1;
+    }
+  }
+</style>
