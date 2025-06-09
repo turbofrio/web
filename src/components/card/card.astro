@@ -1,0 +1,36 @@
+---
+type Props = {
+  children: any
+  class?: string
+  variant?: "primary" | "secondary"
+}
+
+const { class: className, variant = "primary", ...rest } = Astro.props
+---
+
+<div class:list={["card", variant, className]} {...rest}>
+  <slot />
+</div>
+
+<style>
+  .card {
+    display: flex;
+    flex-direction: column;
+
+    border: solid 1px var(--gray-200);
+    border-radius: 12px;
+  }
+
+  .primary {
+    background-color: color-mix(in lab, white 90%, transparent);
+    box-shadow: 0 3px 3px color-mix(in lab, black 12%, transparent);
+    max-width: 358px;
+    padding: 32px 20px 20px;
+  }
+
+  @media (min-width: 1024px) {
+    .card {
+      max-width: 336px;
+    }
+  }
+</style>
