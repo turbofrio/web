@@ -1,0 +1,147 @@
+---
+import WhatsAppLogoTeal from "@icons/whatsapp-logo-teal.svg"
+import WrenchIcon from "@icons/wrench.svg"
+import AirConditioningIcon from "@icons/air-conditioning.svg"
+import CashFlowIcon from "@icons/cash-flow.svg"
+import Button from "./button.astro"
+import Card from "./card/card.astro"
+import CardTitle from "./card/card-title.astro"
+import CardSubtitle from "./card/card-subtitle.astro"
+import CardContent from "./card/card-content.astro"
+import CardIconWrapper from "./card/card-icon-wrapper.astro"
+---
+
+<article id="services" class="container">
+  <h2>
+    Desde 2018,<br class="line-break" />
+    <strong>Excelência em</strong> climatização
+  </h2>
+
+  <p>
+    Redução de custos e sinergia completa entre todos os <br
+      class="line-break"
+    /> processos de execução do seu projeto de climatização.
+  </p>
+
+  <div class="card-wrapper">
+    <Card>
+      <CardIconWrapper>
+        <WrenchIcon aria-hidden />
+      </CardIconWrapper>
+
+      <CardTitle> Manutenção corretiva </CardTitle>
+
+      <CardSubtitle> Evite gastos desnecessários! </CardSubtitle>
+
+      <CardContent>
+        <p>
+          Nossa revisão técnica inclui limpeza interna, verificação de pressão
+          do gás, análise elétrica e ajustes preventivos para garantir o máximo
+          desempenho do seu equipamento.
+        </p>
+      </CardContent>
+
+      <Button size="md" variant="outline">
+        <WhatsAppLogoTeal aria-hidden />
+        Solicitar manutenção
+      </Button>
+    </Card>
+
+    <Card>
+      <CardIconWrapper>
+        <AirConditioningIcon aria-hidden />
+      </CardIconWrapper>
+
+      <CardTitle> Conserto e Instalação </CardTitle>
+
+      <CardSubtitle> Seu ar não está gelando como antes? </CardSubtitle>
+
+      <CardContent>
+        <p>
+          Realizamos a reposição do gás refrigerante com produtos homologados,
+          além de detecção e reparo de vazamentos para restaurar a eficiência
+          térmica do seu aparelho.
+        </p>
+      </CardContent>
+
+      <Button size="md" variant="outline">
+        <WhatsAppLogoTeal aria-hidden />
+        Agendar um horário
+      </Button>
+    </Card>
+
+    <Card>
+      <CardIconWrapper>
+        <CashFlowIcon aria-hidden />
+      </CardIconWrapper>
+
+      <CardTitle> Venda de ar condicionado </CardTitle>
+
+      <CardSubtitle> Aparelhos com garantia de qualidade </CardSubtitle>
+
+      <CardContent>
+        <p>
+          Oferecemos aparelhos de ar condicionado para venda. Nossos produtos
+          passam por uma rigorosa vistoria técnica para garantir qualidade e
+          desempenho.
+        </p>
+      </CardContent>
+
+      <Button size="md" variant="outline">
+        <WhatsAppLogoTeal aria-hidden />
+        Fazer orçamento
+      </Button>
+    </Card>
+  </div>
+</article>
+
+<style>
+  article {
+    padding: 64px 16px;
+  }
+
+  article > h2,
+  article > p {
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  strong {
+    color: var(--sky-500);
+    font-weight: 600;
+  }
+
+  .line-break {
+    display: none;
+  }
+
+  .card-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+
+    gap: 16px;
+    margin-top: 40px;
+  }
+
+  .card-icon {
+    margin-bottom: 20px;
+  }
+
+  @media (min-width: 640px) {
+    .line-break {
+      display: initial;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    article {
+      padding-block: 80px;
+    }
+
+    .card-wrapper {
+      grid-template-columns: repeat(3, max-content);
+      justify-content: center;
+    }
+  }
+</style>
