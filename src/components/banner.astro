@@ -1,0 +1,94 @@
+---
+import WhatsAppIcon from "@icons/whatsapp-logo.svg"
+import BannerImage from "@images/banner.png"
+import { Picture } from "astro:assets"
+import Button from "./button.astro"
+---
+
+<section class="container">
+  <Picture src={BannerImage} alt="Profissional limpando o ar condicionado" />
+
+  <div>
+    <h2>Relaxar, com conforto e tranquilidade?</h2>
+
+    <p>
+      Conte com a Turbo frio, tenha um ambiente climatizado e friozinho! 😌❄️
+    </p>
+
+    <ul>
+      <li>Manutenção Preventiva</li>
+      <li>Padrões de segurança e qualidade</li>
+      <li>Instalação</li>
+    </ul>
+
+    <Button>
+      <WhatsAppIcon aria-hidden />
+      Agende uma visita técnica
+    </Button>
+  </div>
+</section>
+
+<style>
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 60px;
+    padding: 64px 16px;
+  }
+
+  img {
+    border-radius: 16px;
+    box-shadow:
+      0 8px 10px color-mix(in lab, black 10%, transparent),
+      0 20px 25px color-mix(in lab, black 10%, transparent);
+  }
+
+  h2 {
+    margin-bottom: 12px;
+  }
+
+  p {
+    margin-bottom: 40px;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+
+    gap: 10px;
+    margin-bottom: 40px;
+
+    color: var(--gray-800);
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  li::before {
+    content: url("../assets/icons/check-mark.svg");
+    display: inline-block;
+    vertical-align: bottom;
+
+    height: 26px;
+    margin-right: 8px;
+    width: 26px;
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+
+    img {
+      aspect-ratio: 9/7;
+      max-width: 562px;
+    }
+
+    div {
+      max-width: 418px;
+    }
+  }
+</style>
