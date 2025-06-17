@@ -1,0 +1,85 @@
+---
+import type { HTMLAttributes } from "astro/types"
+
+type Props = HTMLAttributes<"details"> & {
+  class?: string
+  variant?: "primary" | "secondary"
+}
+
+const { class: className, variant = "primary", ...rest } = Astro.props
+---
+
+<details class:list={[variant, className]} {...rest}>
+  <summary>
+    <span>
+      <slot name="icon" />
+    </span>
+
+    <slot name="title" />
+  </summary>
+
+  <div>
+    <slot name="content" />
+  </div>
+</details>
+
+<style>
+  details {
+    cursor: pointer;
+    border-radius: 12px;
+  }
+
+  details[open] {
+    color: var(--gray-500);
+  }
+
+  details[open] > summary {
+    color: var(--sky-600);
+    padding-bottom: 16px;
+  }
+
+  summary {
+    display: flex;
+    align-items: center;
+    list-style: none;
+  }
+
+  summary > span {
+    display: none;
+  }
+
+  .primary {
+    background-color: color-mix(in lab, white 10%, transparent);
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+
+    border: solid 1px color-mix(in lab, white 5%, transparent);
+    max-width: 688px;
+  }
+
+  .primary[open] {
+    background-color: color-mix(in lab, white 90%, transparent);
+    box-shadow: 0 4px 4px color-mix(in lab, black 15%, transparent);
+  }
+
+  .primary > summary {
+    font-size: 1.125rem;
+    font-weight: 700;
+
+    padding: 20px 20px 20px 16px;
+  }
+
+  .primary span {
+    display: inline;
+    margin-right: 36px;
+  }
+
+  .primary[open] span {
+    color: var(--sky-500);
+  }
+
+  .primary > div {
+    overflow: hidden;
+    padding: 0px 20px 20px 84px;
+  }
+</style>
