@@ -1,0 +1,125 @@
+---
+import Accordion from "./accordion.astro"
+import AirVentIcon from "@icons/air-vent.svg"
+import RadioIcon from "@icons/radio.svg"
+import DropletsIcon from "@icons/droplets.svg"
+import AnnoyedIcon from "@icons/annoyed.svg"
+import ZapIcon from "@icons/zap.svg"
+---
+
+<article>
+  <div class="container">
+    <div>
+      <h2>
+        <strong>5 sinais</strong> de que seu ar condicionado precisa de manutenção
+      </h2>
+
+      <Accordion open name="tips">
+        <AirVentIcon slot="icon" aria-hidden />
+
+        <p slot="title">Ar Fraco ou Quente</p>
+
+        <p slot="content">
+          Se o aparelho não está resfriando como antes, pode ser sujeira no
+          filtro, falta de gás ou problemas no compressor.
+        </p>
+      </Accordion>
+
+      <Accordion name="tips">
+        <RadioIcon slot="icon" aria-hidden />
+
+        <p slot="title">Barulhos estranhos</p>
+
+        <p slot="content">
+          Ruídos como chiados, batidas ou vibrações indicam desgaste em
+          componentes internos que precisam de atenção.
+        </p>
+      </Accordion>
+
+      <Accordion name="tips">
+        <DropletsIcon slot="icon" aria-hidden />
+
+        <p slot="title">Vazamento de Água</p>
+
+        <p slot="content">
+          Acúmulo de líquido ou gotejamento pode ser entupimento no dreno ou
+          problemas na tubulação.
+        </p>
+      </Accordion>
+
+      <Accordion name="tips">
+        <AnnoyedIcon slot="icon" aria-hidden />
+
+        <p slot="title">Odores Desagradáveis</p>
+
+        <p slot="content">
+          Mofo, poeira ou bactérias no filtro e dutos podem causar mau cheiro e
+          até alergias.
+        </p>
+      </Accordion>
+
+      <Accordion name="tips">
+        <ZapIcon slot="icon" aria-hidden />
+
+        <p slot="title">Alto Consumo de Energia</p>
+
+        <p slot="content">
+          Se sua conta de luz subiu sem motivo, seu ar-condicionado pode estar
+          trabalhando mais devido à falta de manutenção.
+        </p>
+      </Accordion>
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    background: url("../assets/images/office.png");
+    background-position: bottom;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .container {
+    color: white;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding: 64px 16px;
+  }
+
+  .container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  h2 {
+    color: white;
+    font-size: 1.875rem;
+    font-weight: 600;
+
+    margin-bottom: 10px;
+    max-width: 688px;
+  }
+
+  strong {
+    color: var(--sky-400);
+  }
+
+  @media (min-width: 1024px) {
+    h2 {
+      font-size: 2.25rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .container {
+      grid-template-areas: ". content .";
+      grid-template-columns: 1fr minmax(0, 1040px) 1fr;
+    }
+
+    .container > div {
+      grid-area: content;
+    }
+  }
+</style>
