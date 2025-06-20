@@ -24,13 +24,39 @@ const { class: className, variant = "primary", ...rest } = Astro.props
   .primary {
     background-color: color-mix(in lab, white 90%, transparent);
     box-shadow: 0 3px 3px color-mix(in lab, black 12%, transparent);
+    color: var(--gray-500);
     max-width: 358px;
     padding: 32px 20px 20px;
+
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  .secondary {
+    background-color: white;
+    box-shadow: 0 1px 2px color-mix(in lab, black 15%, transparent);
+    color: var(--gray-800);
+
+    flex-shrink: 0;
+    height: 420px;
+    padding: 24px;
+    max-width: 280px;
+
+    font-size: 1.125rem;
+    font-weight: 500;
+    line-height: 1.2;
   }
 
   @media (min-width: 1024px) {
-    .card {
+    .primary {
       max-width: 336px;
+    }
+
+    .secondary {
+      max-width: 316px;
+
+      font-size: 1.25rem;
     }
   }
 </style>

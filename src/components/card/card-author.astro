@@ -1,0 +1,86 @@
+---
+type Props = {
+  avatar?: ImageMetadata
+  author: string
+  date: string
+}
+
+const { author, date } = Astro.props
+const authorInitialLetters = author.replace(/[^A-Z]/g, "")
+---
+
+<p>
+  <span class="avatar" aria-hidden="true">
+    <span>
+      <slot />
+    </span>
+    {authorInitialLetters}
+  </span>
+
+  <strong>{author}</strong>
+
+  <time datetime={date}></time>
+
+  <script>
+    import { calculateTimePastSinceTargetDate } from "@/utils/calculate-time-past-since-target-date"
+
+    const reviewDates = document.querySelectorAll("time")
+
+    reviewDates.forEach((review) => {
+      const date = review.getAttribute("datetime") || ""
+      review.textContent = calculateTimePastSinceTargetDate(date)
+    })
+  </script>
+</p>
+
+<style>
+  p {
+    display: grid;
+    grid-template-areas: "image author" "image time";
+    grid-template-columns: min-content 1fr;
+    column-gap: 16px;
+  }
+
+  .avatar {
+    background-color: var(--blue-100);
+    color: var(--blue-800);
+    grid-area: image;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 9999px;
+    height: 46px;
+    width: 46px;
+
+    font-size: 1rem;
+    font-weight: 600;
+    line-height: 1.5;
+
+    position: relative;
+
+    & span {
+      position: absolute;
+      z-index: 1;
+    }
+  }
+
+  strong {
+    grid-area: author;
+
+    color: var(--gray-800);
+    font-size: 1rem;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+
+  time {
+    grid-area: time;
+
+    color: var(--gray-500);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+</style>

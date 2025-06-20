@@ -1,0 +1,29 @@
+---
+import StarIcon from "@icons/star.svg"
+
+type Props = {
+  stars: 1 | 2 | 3 | 4 | 5
+}
+
+const { stars } = Astro.props
+
+const rating = [1, 2, 3, 4, 5].filter((num) => num <= stars)
+---
+
+<p aria-label={stars === 1 ? `${stars} estrela` : `${stars} estrelas`}>
+  {rating.map((_) => <StarIcon class="icon" />)}
+</p>
+
+<style>
+  p {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 24px;
+  }
+
+  .icon {
+    color: var(--amber-300);
+    fill: var(--amber-300);
+    stroke-width: 0px;
+  }
+</style>
