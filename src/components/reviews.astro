@@ -1,0 +1,154 @@
+---
+import WhatsappIcon from "@icons/whatsapp-logo.svg"
+import Button from "./button.astro"
+import Card from "./card/card.astro"
+import CardContent from "./card/card-content.astro"
+import CardRating from "./card/card-rating.astro"
+import CardAuthor from "./card/card-author.astro"
+import pauloAvatar from "@images/paulo-vital-avatar.png"
+import lucasAvatar from "@images/lucas-barros-avatar.png"
+import { Image } from "astro:assets"
+---
+
+<section>
+  <div class="container">
+    <h2>
+      O que os <strong>nossos<br class="line-break" /> clientes</strong> dizem
+    </h2>
+  </div>
+
+  <div class="reviews-wrapper">
+    <div class="scroller">
+      <div class="reviews">
+        <Card variant="secondary">
+          <CardContent>
+            <p>
+              Melhor empresa de climatização em Maceió e regiões, atenderam
+              totalmente as minhas expectativas. Pontualidade, ótimo
+              atendimento. Confio de olhos fechados!!!
+            </p>
+          </CardContent>
+
+          <CardRating stars={5} />
+
+          <CardAuthor author="Luana Beatriz" date="2025-01-01" />
+        </Card>
+
+        <Card variant="secondary">
+          <CardContent>
+            <p>
+              Empresa correta, serviço de extrema qualidade, atendimento antes,
+              durante e após o serviço muito bom, técnicos qualificados e
+              educados, indico a todos sem dúvidas.
+            </p>
+          </CardContent>
+
+          <CardRating stars={5} />
+
+          <CardAuthor author="João Sarmento" date="2024-11-01" />
+        </Card>
+
+        <Card variant="secondary">
+          <CardContent>
+            <p>
+              Excelente atendimento e profissionalismo! A equipe é altamente
+              qualificada, pontual e atenciosa. Os serviços de climatização
+              foram realizados com perfeição, garantindo conforto e eficiência.
+              Recomendo de olhos fechados para quem busca qualidade e confiança!
+            </p>
+          </CardContent>
+
+          <CardRating stars={5} />
+
+          <CardAuthor
+            avatar={pauloAvatar}
+            author="Paulo Vital"
+            date="2025-05-15"
+          >
+            <Image src={pauloAvatar} alt="" aria-hidden />
+          </CardAuthor>
+        </Card>
+
+        <Card variant="secondary">
+          <CardContent class="content">
+            <p>
+              Excelente! Equipe profissional e especializada, maquinário de
+              última geração! Super indico!
+            </p>
+          </CardContent>
+
+          <CardRating stars={5} />
+
+          <CardAuthor
+            avatar={lucasAvatar}
+            author="Lucas Barros"
+            date="2023-05-15"
+          >
+            <Image src={lucasAvatar} alt="" aria-hidden />
+          </CardAuthor>
+        </Card>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <Button>
+      <WhatsappIcon aria-hidden />
+      Fale conosco
+    </Button>
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: var(--sky-50);
+    padding-block: 80px;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding-inline: 16px;
+  }
+
+  h2 {
+    text-align: center;
+    line-height: 1.2;
+  }
+
+  strong {
+    color: var(--sky-600);
+    font-weight: 600;
+  }
+
+  .reviews-wrapper {
+    overflow-x: auto;
+  }
+
+  .scroller {
+    margin-inline: auto;
+    width: max-content;
+  }
+
+  .reviews {
+    display: flex;
+    gap: 16px;
+    margin: 55px 16px;
+  }
+
+  .content {
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 1024px) {
+    button {
+      align-self: center;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .reviews {
+      gap: 55px;
+    }
+  }
+</style>
