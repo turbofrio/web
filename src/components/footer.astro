@@ -1,0 +1,101 @@
+---
+import TurboFrioLogo from "@icons/turbo-frio-logo-white.svg"
+import InstagramIcon from "@icons/instagram.svg"
+import FacebookIcon from "@icons/facebook.svg"
+import MailIcon from "@icons/mail.svg"
+import WhatsAppIcon from "@icons/whatsapp.svg"
+---
+
+<footer>
+  <div class="container">
+    <TurboFrioLogo aria-label="Turbofrio climatização" />
+
+    <ul class="social-networks">
+      <li>
+        <a href="https://www.instagram.com/turbo_frio_climatizacao/">
+          <span class="sr-only">Siga nosso Instagram</span>
+
+          <InstagramIcon class="icon" aria-hidden />
+        </a>
+      </li>
+
+      <li>
+        <a
+          href="https://www.facebook.com/p/turbo_frio_climatizacao-100058924242846/"
+        >
+          <span class="sr-only">Curta nossa página no Facebook</span>
+
+          <FacebookIcon class="icon" aria-hidden />
+        </a>
+      </li>
+
+      <li>
+        <a href="">
+          <span class="sr-only">Nosso email</span>
+
+          <MailIcon class="icon" aria-hidden />
+        </a>
+      </li>
+
+      <li>
+        <a href="(82) 99812-8254">
+          <span class="sr-only">Nosso WhatsApp</span>
+
+          <WhatsAppIcon class="icon" aria-hidden />
+        </a>
+      </li>
+    </ul>
+
+    <ul class="nav">
+      <li>
+        <a href="#about"> Sobre </a>
+      </li>
+
+      <li>
+        <a href="#activities"> Serviços </a>
+      </li>
+
+      <li>
+        <a href="#contact"> Contato </a>
+      </li>
+    </ul>
+  </div>
+</footer>
+
+<style>
+  footer {
+    background-color: var(--sky-800);
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    gap: 24px;
+    padding-block: 80px;
+  }
+
+  ul {
+    display: flex;
+    list-style: none;
+  }
+
+  .social-networks {
+    gap: 24px;
+  }
+
+  .nav li:not(:last-child)::after {
+    content: "/";
+    color: color-mix(in lab, white 60%, transparent);
+    margin-inline: 12px;
+  }
+
+  .nav a {
+    color: white;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1.42;
+    text-decoration: none;
+  }
+</style>
