@@ -1,0 +1,109 @@
+---
+import Button from "./button.astro"
+import Input from "./input.astro"
+import TextArea from "./text-area.astro"
+---
+
+<form>
+  <label>
+    <span class="sr-only">Insira o seu nome completo</span>
+
+    <Input type="text" name="name" placeholder="Seu nome completo" required />
+  </label>
+
+  <label>
+    <span class="sr-only">Insira o seu melhor e-mail para contato</span>
+
+    <Input type="email" name="email" placeholder="Email" required />
+  </label>
+
+  <label>
+    <span class="sr-only">Insira o seu melhor telefone para contato</span>
+
+    <Input type="tel" name="phone" placeholder="Telefone" required />
+  </label>
+
+  <label>
+    <span>Mensagem</span>
+
+    <span id="message-length">0/100</span>
+
+    <TextArea
+      id="message"
+      name="message"
+      placeholder="Descreva aqui o serviço de que precisa"
+      rows={3}
+      maxlength={100}
+      required
+    />
+
+    <script>
+      const message = document.getElementById("message") as HTMLTextAreaElement
+      const messageLength = document.getElementById(
+        "message-length"
+      ) as HTMLSpanElement
+
+      message.addEventListener("input", () => {
+        messageLength.textContent = `${message.value.length}/100`
+      })
+    </script>
+  </label>
+
+  <label>
+    <Input type="checkbox" name="terms" required />
+    Eu aceito os <a href="">Termos e Condições</a>
+  </label>
+
+  <Button size="md"> Enviar </Button>
+</form>
+
+<style>
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 16px;
+  }
+
+  label:has(> textarea) {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 8px;
+
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+  }
+
+  label:has(> textarea) > span:first-of-type {
+    flex: 1;
+
+    color: var(--gray-800);
+    font-weight: 600;
+  }
+
+  textarea {
+    flex-basis: 100%;
+  }
+
+  label:has(> input[type="checkbox"]) {
+    display: flex;
+    align-items: center;
+    margin-block: 16px;
+
+    color: var(--gray-800);
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  input[type="checkbox"] {
+    margin-right: 16px;
+  }
+
+  a {
+    margin-left: 4px;
+    text-decoration: none;
+  }
+</style>
