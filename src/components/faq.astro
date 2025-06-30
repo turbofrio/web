@@ -1,0 +1,109 @@
+---
+import Accordion from "./accordion.astro"
+---
+
+<article>
+  <div class="container">
+    <h2>Ficou alguma <strong>dúvida?</strong></h2>
+
+    <p>Confira respostas para algumas dúvidas frequentes</p>
+
+    <div>
+      <Accordion variant="secondary" open>
+        <p slot="title">
+          Qual a importância da manutenção regular do ar condicionado?
+        </p>
+
+        <p slot="content">
+          A manutenção periódica garante o bom funcionamento do equipamento,
+          aumenta sua vida útil, melhora a eficiência energética (reduzindo
+          custos na conta de luz) e previne problemas como vazamentos, mau
+          cheiro e falhas no sistema.
+        </p>
+      </Accordion>
+
+      <Accordion variant="secondary">
+        <p slot="title">
+          Com que frequência devo realizar a manutenção do meu ar condicionado?
+        </p>
+
+        <p slot="content">
+          Recomendamos uma manutenção preventiva a cada 6 meses, principalmente
+          em Maceió, onde o clima quente e úmido exige mais do equipamento. Para
+          locais com alto uso (como comércios e empresas), o ideal é a cada 3
+          meses.
+        </p>
+      </Accordion>
+
+      <Accordion variant="secondary">
+        <p slot="title">
+          Quais os sinais de que meu ar condicionado precisa de manutenção?
+        </p>
+
+        <ul slot="content">
+          <li>Redução na capacidade de resfriamento</li>
+
+          <li>Barulhos estranhos (chiados, batidas, vibrações)</li>
+
+          <li>Odor desagradável ao ligar</li>
+
+          <li>Vazamento de água ou gás refrigerante</li>
+
+          <li>Aumento no consumo de energia elétrica</li>
+        </ul>
+      </Accordion>
+
+      <Accordion variant="secondary">
+        <p slot="title">
+          Vocês realizam manutenção em ar condicionado residencial e comercial?
+        </p>
+
+        <p slot="content">
+          Sim! Atendemos residências, empresas, comércios e indústrias em Maceió
+          e região, com serviços especializados para cada tipo de equipamento
+          (split, janela, piso-teto, central, etc.).
+        </p>
+      </Accordion>
+    </div>
+  </div>
+</article>
+
+<style>
+  article {
+    background-color: var(--zinc-50);
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    padding: 80px 10px;
+  }
+
+  h2 {
+    text-align: center;
+  }
+
+  .container > p {
+    text-align: center;
+    margin-block: 12px 40px;
+  }
+
+  .container > div {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-inline: auto;
+    max-width: 640px;
+  }
+
+  strong {
+    color: var(--sky-500);
+  }
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    list-style: none;
+  }
+</style>
