@@ -9,10 +9,16 @@ import Reviews from "@/components/reviews.astro"
 import Faq from "@/components/faq.astro"
 import Contact from "@/components/contact.astro"
 import Footer from "@/components/footer.astro"
+import WhatsAppIcon from "@icons/whatsapp.svg"
 ---
 
 <RootLayout title="Turbo Frio">
   <Header />
+
+  <button class="fab-button">
+    <span class="sr-only">WhatsApp</span>
+    <WhatsAppIcon aria-hidden />
+  </button>
 
   <main>
     <Hero />
@@ -32,3 +38,35 @@ import Footer from "@/components/footer.astro"
     <Footer />
   </main>
 </RootLayout>
+
+<style>
+  .fab-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 10;
+
+    background-color: var(--teal-500);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 15px;
+    transition: all 150ms;
+
+    & svg {
+      flex-shrink: 0;
+      height: 32px;
+      pointer-events: none;
+      width: 32px;
+    }
+  }
+
+  .fab-button:active {
+    translate: 1px 1px;
+  }
+</style>
