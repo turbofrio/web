@@ -1,5 +1,7 @@
 ---
 import type { HTMLAttributes } from "astro/types"
+import PlusIcon from "@icons/plus.svg"
+import MinusIcon from "@icons/minus.svg"
 
 type Props = HTMLAttributes<"details"> & {
   class?: string
@@ -16,6 +18,9 @@ const { class: className, variant = "primary", ...rest } = Astro.props
     </span>
 
     <slot name="title" />
+
+    <PlusIcon class="plus-icon" aria-hidden />
+    <MinusIcon class="minus-icon" aria-hidden />
   </summary>
 
   <div>
@@ -40,7 +45,6 @@ const { class: className, variant = "primary", ...rest } = Astro.props
 
   summary {
     display: flex;
-    align-items: center;
     list-style: none;
   }
 
@@ -66,6 +70,7 @@ const { class: className, variant = "primary", ...rest } = Astro.props
     font-size: 1.125rem;
     font-weight: 700;
 
+    align-items: center;
     padding: 20px 20px 20px 16px;
   }
 
@@ -81,5 +86,42 @@ const { class: className, variant = "primary", ...rest } = Astro.props
   .primary > div {
     overflow: hidden;
     padding: 0px 20px 20px 84px;
+  }
+
+  .minus-icon,
+  .plus-icon {
+    display: none;
+    flex-shrink: 0;
+    margin-left: 20px;
+  }
+
+  .secondary:not([open]) .plus-icon {
+    display: block;
+  }
+
+  .secondary[open] .minus-icon {
+    display: block;
+  }
+
+  .secondary[open] {
+    background-color: white;
+    border: solid 1px var(--gray-200);
+    box-shadow: 0 1px 2px color-mix(in lab, black 15%, transparent);
+  }
+
+  .secondary > summary {
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+
+    color: var(--gray-800);
+    font-weight: 600;
+  }
+
+  .secondary > div {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 1.5;
+    padding: 0 20px 16px 20px;
   }
 </style>
