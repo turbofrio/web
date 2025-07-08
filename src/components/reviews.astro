@@ -7,7 +7,90 @@ import CardRating from "./card/card-rating.astro"
 import CardAuthor from "./card/card-author.astro"
 import pauloAvatar from "@images/paulo-vital-avatar.png"
 import lucasAvatar from "@images/lucas-barros-avatar.png"
-import { Image } from "astro:assets"
+import edMendoncaAvatar from "@images/ed-mendonca-avatar.png"
+import felipeBotelhoAvatar from "@images/felipe-botelho-avatar.png"
+import jaineFalcaoAvatar from "@images/jaine-falcao-avatar.png"
+import luizaBrandaoAvatar from "@images/luiza-brandao-avatar.png"
+import mairllyLustozaAvatar from "@images/mairlly-lustoza-avatar.png"
+import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
+
+const reviews: {
+  review: string
+  author: string
+  date: string
+  image: string
+}[] = [
+  {
+    review: `Melhor empresa de climatização em Maceió e regiões, atenderam
+              totalmente as minhas expectativas. Pontualidade, ótimo
+              atendimento. Confio de olhos fechados!!!`,
+    author: "Luana Beatriz",
+    date: "2025-01-01",
+    image: "",
+  },
+  {
+    review: `Empresa correta, serviço de extrema qualidade, atendimento antes,
+              durante e após o serviço muito bom, técnicos qualificados e
+              educados, indico a todos sem dúvidas.`,
+    author: "João Sarmento",
+    date: "2024-11-01",
+    image: "",
+  },
+  {
+    review: `Excelente atendimento e profissionalismo! A equipe é altamente
+              qualificada, pontual e atenciosa. Os serviços de climatização
+              foram realizados com perfeição, garantindo conforto e eficiência.
+              Recomendo de olhos fechados para quem busca qualidade e confiança!`,
+    author: "Paulo Vital",
+    date: "2025-05-15",
+    image: pauloAvatar.src,
+  },
+  {
+    review: `Excelente! Equipe profissional e especializada, maquinário de
+              última geração! Super indico!`,
+    author: "Lucas Barros",
+    date: "2023-05-15",
+    image: lucasAvatar.src,
+  },
+  {
+    review: `Experiência muito boa. Atendimento, disponibilidade, execução do serviço 
+              e explicação de todo o procedimento. Só agradecer pela qualidade 👏🏻👊🏻`,
+    author: "Felipe Botelho",
+    date: "2025-06-04",
+    image: felipeBotelhoAvatar.src,
+  },
+  {
+    review: `Profissionais responsáveis e preço justo.`,
+    author: "Mairlly Lustoza",
+    date: "2025-06-04",
+    image: mairllyLustozaAvatar.src,
+  },
+  {
+    review: `Empresa maravilhosa, colaboradores pontuais, éticos e com valores.`,
+    author: "Lany Tatajuba",
+    date: "2025-01-04",
+    image: "",
+  },
+  {
+    review: `Apesar de ter ficado chateada com o atendimento demorado inicialmente, 
+              fizeram um trabalho ótimo e foram muito profissionais.`,
+    author: "Luiza Brandão",
+    date: "2024-07-04",
+    image: luizaBrandaoAvatar.src,
+  },
+  {
+    review: `Ótimo profissionais`,
+    author: "Ed Mendonca",
+    date: "2025-06-04",
+    image: edMendoncaAvatar.src,
+  },
+  {
+    review: `Ótimos profissionais, excelente atendimento. Super indico!!!!`,
+    author: "Jaine Falcão",
+    date: "2023-07-04",
+    image: jaineFalcaoAvatar.src,
+  },
+]
 ---
 
 <section>
@@ -20,79 +103,41 @@ import { Image } from "astro:assets"
   <div class="reviews-wrapper">
     <div class="scroller">
       <div class="reviews">
-        <Card variant="secondary">
-          <CardContent>
-            <p>
-              Melhor empresa de climatização em Maceió e regiões, atenderam
-              totalmente as minhas expectativas. Pontualidade, ótimo
-              atendimento. Confio de olhos fechados!!!
-            </p>
-          </CardContent>
+        {
+          reviews.map(({ author, date, image, review }, i) => (
+            <Card variant="secondary">
+              <CardContent>
+                <p>{review}</p>
+              </CardContent>
 
-          <CardRating />
+              <CardRating />
 
-          <CardAuthor author="Luana Beatriz" date="2025-01-01" />
-        </Card>
+              <CardAuthor author={author} avatar={image} date={date} />
+            </Card>
+          ))
+        }
 
-        <Card variant="secondary">
-          <CardContent>
-            <p>
-              Empresa correta, serviço de extrema qualidade, atendimento antes,
-              durante e após o serviço muito bom, técnicos qualificados e
-              educados, indico a todos sem dúvidas.
-            </p>
-          </CardContent>
+        <script>
+          import { getRandomNumbers } from "@utils/get-random-numbers"
 
-          <CardRating />
+          const cards = document.querySelectorAll(".reviews > .secondary")
+          const setOfRandomNumbers = getRandomNumbers(4, 0, 9)
 
-          <CardAuthor author="João Sarmento" date="2024-11-01" />
-        </Card>
-
-        <Card variant="secondary">
-          <CardContent>
-            <p>
-              Excelente atendimento e profissionalismo! A equipe é altamente
-              qualificada, pontual e atenciosa. Os serviços de climatização
-              foram realizados com perfeição, garantindo conforto e eficiência.
-              Recomendo de olhos fechados para quem busca qualidade e confiança!
-            </p>
-          </CardContent>
-
-          <CardRating />
-
-          <CardAuthor
-            avatar={pauloAvatar}
-            author="Paulo Vital"
-            date="2025-05-15"
-          >
-            <Image src={pauloAvatar} alt="" aria-hidden />
-          </CardAuthor>
-        </Card>
-
-        <Card variant="secondary">
-          <CardContent class="content">
-            <p>
-              Excelente! Equipe profissional e especializada, maquinário de
-              última geração! Super indico!
-            </p>
-          </CardContent>
-
-          <CardRating />
-
-          <CardAuthor
-            avatar={lucasAvatar}
-            author="Lucas Barros"
-            date="2023-05-15"
-          >
-            <Image src={lucasAvatar} alt="" aria-hidden />
-          </CardAuthor>
-        </Card>
+          cards.forEach((card, index) => {
+            setOfRandomNumbers.has(index)
+              ? card.classList.remove("hidden")
+              : card.classList.add("hidden")
+          })
+        </script>
       </div>
     </div>
   </div>
 
   <div class="container">
-    <Button>
+    <Button
+      as="a"
+      href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+    >
       <WhatsappIcon aria-hidden />
       Fale conosco
     </Button>
@@ -141,7 +186,7 @@ import { Image } from "astro:assets"
   }
 
   @media (min-width: 1024px) {
-    button {
+    a {
       align-self: center;
     }
   }

@@ -1,20 +1,25 @@
 ---
 type Props = {
-  avatar?: ImageMetadata
+  avatar: string
   author: string
   date: string
 }
 
-const { author, date } = Astro.props
+const { author, avatar, date } = Astro.props
 const authorInitialLetters = author.replace(/[^A-Z]/g, "")
 ---
 
 <p>
   <span class="avatar" aria-hidden="true">
-    <span>
-      <slot />
-    </span>
-    {authorInitialLetters}
+    {
+      avatar !== "" ? (
+        <span>
+          <img src={avatar} alt="" aria-hidden="true" height="46" width="46" />
+        </span>
+      ) : (
+        authorInitialLetters
+      )
+    }
   </span>
 
   <strong>{author}</strong>
