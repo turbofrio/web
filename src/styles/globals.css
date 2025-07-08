@@ -141,6 +141,10 @@ img {
   max-width: 100%;
 }
 
+.hidden {
+  display: none !important;
+}
+
 .sr-only {
   clip: rect(0, 0, 0, 0);
   overflow: hidden;
