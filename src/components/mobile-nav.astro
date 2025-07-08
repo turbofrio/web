@@ -2,12 +2,18 @@
 import WhatsappIcon from "@icons/whatsapp-logo.svg"
 import Button from "./button.astro"
 import NavLinks from "./nav-links.astro"
+import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
 ---
 
 <dialog id="mobile-nav" popover>
   <NavLinks />
 
-  <Button size="md" variant="secondary">
+  <Button
+    as="a"
+    href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+    size="md"
+    variant="secondary"
+  >
     <WhatsappIcon aria-hidden />
     Contato via whatsapp
   </Button>

@@ -9,6 +9,7 @@ import CardTitle from "./card/card-title.astro"
 import CardSubtitle from "./card/card-subtitle.astro"
 import CardContent from "./card/card-content.astro"
 import CardIconWrapper from "./card/card-icon-wrapper.astro"
+import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
 ---
 
 <article id="activities" class="container">
@@ -41,7 +42,12 @@ import CardIconWrapper from "./card/card-icon-wrapper.astro"
         </p>
       </CardContent>
 
-      <Button size="md" variant="outline">
+      <Button
+        as="a"
+        href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+        size="md"
+        variant="outline"
+      >
         <WhatsAppLogoTeal aria-hidden />
         Solicitar manutenção
       </Button>
@@ -64,7 +70,12 @@ import CardIconWrapper from "./card/card-icon-wrapper.astro"
         </p>
       </CardContent>
 
-      <Button size="md" variant="outline">
+      <Button
+        as="a"
+        href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+        size="md"
+        variant="outline"
+      >
         <WhatsAppLogoTeal aria-hidden />
         Agendar um horário
       </Button>
@@ -87,7 +98,12 @@ import CardIconWrapper from "./card/card-icon-wrapper.astro"
         </p>
       </CardContent>
 
-      <Button size="md" variant="outline">
+      <Button
+        as="a"
+        href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+        size="md"
+        variant="outline"
+      >
         <WhatsAppLogoTeal aria-hidden />
         Fazer orçamento
       </Button>

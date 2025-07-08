@@ -1,14 +1,17 @@
 ---
-import type { HTMLAttributes } from "astro/types"
+import type { Polymorphic } from "astro/types"
 
-type Props = HTMLAttributes<"button"> & {
+type Props<Tag extends "a" | "button"> = Polymorphic<{
+  as: Tag
   children: any
   class?: string
+  popovertarget?: string
   size?: "md" | "lg" | "icon"
   variant?: "primary" | "secondary" | "outline" | "ghost"
-}
+}>
 
 const {
+  as: Tag = "button",
   class: className,
   size = "lg",
   variant = "primary",
@@ -16,12 +19,13 @@ const {
 } = Astro.props
 ---
 
-<button class:list={[size, variant, className]} {...rest}>
+<Tag class:list={[size, variant, className]} {...rest}>
   <slot />
-</button>
+</Tag>
 
 <style>
-  button {
+  button,
+  a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -35,6 +39,7 @@ const {
     font-size: 0.973rem;
     font-weight: 600;
     line-height: 1;
+    text-decoration: none;
     white-space: nowrap;
 
     transition: all 150ms;
@@ -50,7 +55,8 @@ const {
     }
   }
 
-  button:active {
+  button:active,
+  a:active {
     translate: 1px 1px;
   }
 

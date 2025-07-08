@@ -3,6 +3,7 @@ import WhatsAppIcon from "@icons/whatsapp-logo.svg"
 import BannerImage from "@images/banner.png"
 import { Picture } from "astro:assets"
 import Button from "./button.astro"
+import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
 ---
 
 <section class="container">
@@ -21,7 +22,10 @@ import Button from "./button.astro"
       <li>Instalação</li>
     </ul>
 
-    <Button>
+    <Button
+      as="a"
+      href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+    >
       <WhatsAppIcon aria-hidden />
       Agende uma visita técnica
     </Button>

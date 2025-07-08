@@ -10,15 +10,19 @@ import Faq from "@/components/faq.astro"
 import Contact from "@/components/contact.astro"
 import Footer from "@/components/footer.astro"
 import WhatsAppIcon from "@icons/whatsapp.svg"
+import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
 ---
 
 <RootLayout title="Turbo Frio">
   <Header />
 
-  <button class="fab-button">
+  <a
+    class="fab-button"
+    href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+  >
     <span class="sr-only">WhatsApp</span>
     <WhatsAppIcon aria-hidden />
-  </button>
+  </a>
 
   <main>
     <Hero />
@@ -56,6 +60,7 @@ import WhatsAppIcon from "@icons/whatsapp.svg"
     cursor: pointer;
     flex-shrink: 0;
     padding: 15px;
+    text-decoration: none;
     transition: all 150ms;
 
     & svg {

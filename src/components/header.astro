@@ -6,6 +6,7 @@ import PhoneCallIcon from "@icons/phone-call.svg"
 import Button from "./button.astro"
 import MobileNav from "./mobile-nav.astro"
 import NavLinks from "./nav-links.astro"
+import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
 ---
 
 <header>
@@ -31,11 +32,21 @@ import NavLinks from "./nav-links.astro"
     <ul class="desktop-nav">
       <li class="tel">
         <PhoneCallIcon aria-hidden />
-        <a class="tel" href="#"> (82) 99812-8254 </a>
+        <a
+          class="tel"
+          href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+        >
+          (82) 99812-8254
+        </a>
       </li>
 
       <li>
-        <Button size="md" variant="secondary">
+        <Button
+          as="a"
+          href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+          size="md"
+          variant="secondary"
+        >
           <WhatsappIcon aria-hidden />
           Contato via whatsapp
         </Button>
