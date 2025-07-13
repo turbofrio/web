@@ -1,10 +1,11 @@
+const WHATSAPP_BASE_URL = "https://wa.me"
+
 export function formatMessageForWhatsApp(
   numberInInternationalFormat: string,
   message: string
 ) {
-  const baseURL = "https://wa.me"
   const validNumber = numberInInternationalFormat.replace(/[^\d]/g, "")
   const urlValidMessage = encodeURIComponent(message)
 
-  return `${baseURL}/${validNumber}/?text=${urlValidMessage}`
+  return `${WHATSAPP_BASE_URL}/${validNumber}/?text=${urlValidMessage}`
 }
