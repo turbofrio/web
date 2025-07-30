@@ -135,6 +135,13 @@ h3 {
   font-size: 1.125rem;
 }
 
+a,
+a:link,
+a:visited,
+a:active {
+  color: var(--cyan-600);
+}
+
 img {
   display: block;
   height: auto;

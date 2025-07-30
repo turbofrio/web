@@ -24,7 +24,10 @@ import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
 
     <Button
       as="a"
-      href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+      href={formatMessageForWhatsApp(
+        "+55 (82) 99812-8254",
+        "Olá! Gostaria de solicitar uma visita técnica. Pode me ajudar?"
+      )}
     >
       <WhatsAppIcon aria-hidden />
       Agende uma visita técnica

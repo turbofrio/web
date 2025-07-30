@@ -48,12 +48,18 @@ const { class: className, variant = "primary", ...rest } = Astro.props
     list-style: none;
   }
 
+  summary::marker, /* Latest Chrome, Edge, Firefox */
+  summary::-webkit-details-marker /* Safari */ {
+    display: none;
+  }
+
   summary > span {
     display: none;
   }
 
   .primary {
     background-color: color-mix(in lab, white 10%, transparent);
+    -webkit-backdrop-filter: blur(6px);
     backdrop-filter: blur(6px);
     overflow: hidden;
 

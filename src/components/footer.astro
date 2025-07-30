@@ -4,6 +4,7 @@ import InstagramIcon from "@icons/instagram.svg"
 import FacebookIcon from "@icons/facebook.svg"
 import MailIcon from "@icons/mail.svg"
 import WhatsAppIcon from "@icons/whatsapp.svg"
+import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
 ---
 
 <footer>
@@ -38,7 +39,12 @@ import WhatsAppIcon from "@icons/whatsapp.svg"
       </li>
 
       <li>
-        <a href="(82) 99812-8254">
+        <a
+          href={formatMessageForWhatsApp(
+            "(82) 99812-8254",
+            "Olá! Gostaria de solicitar um orçamento para conserto/instalação de ar condicionado ou geladeira. Pode me ajudar?"
+          )}
+        >
           <span class="sr-only">Nosso WhatsApp</span>
 
           <WhatsAppIcon class="icon" aria-hidden />
