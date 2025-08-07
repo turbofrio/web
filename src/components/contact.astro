@@ -1,42 +1,29 @@
 ---
-import Form from "./form.astro"
+import { formatMessageForWhatsApp } from "@/utils/format-message-for-whatsapp"
 ---
 
 <div id="contact">
   <div class="container">
     <section>
-      <div>
-        <h2>Dúvidas? <strong>Fale conosco</strong></h2>
+      <h2>Localização</h2>
 
-        <p>
-          Preencha o formulário para nos enviar um e-mail. Também estamos
-          disponíveis via <em>Whatsapp</em> e <em>Telefone</em>
-        </p>
+      <address>
+        R. Dr. Luís de Mascarenhas<br /> Farol, Maceió - AL, 57055-030
+      </address>
+      <a href={formatMessageForWhatsApp("+55 (82) 99812-8254", "Ola, equipe!")}
+        >(82) 99812-8254</a
+      >
 
-        <Form />
-      </div>
-
-      <hr class="thematic-break" />
-
-      <div>
-        <h2>Localização</h2>
-
-        <address>
-          R. Dr. Luís de Mascarenhas<br /> Farol, Maceió - AL, 57055-030
-        </address>
-        <a href="">(82) 99812-8254</a>
-
-        <iframe
-          class="map"
-          title="mapa"
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.362929314602!2d-35.74004772413497!3d-9.649997801918888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x701459696191d4f%3A0x9f5d48037211b8!2sTurbofrio%20Climatiza%C3%A7%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1750418866284!5m2!1spt-BR!2sbr"
-          width="600"
-          height="450"
-          style="border:0;"
-          allowfullscreen=""
-          loading="lazy"
-          referrerpolicy="no-referrer-when-downgrade"></iframe>
-      </div>
+      <iframe
+        class="map"
+        title="mapa"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3933.362929314602!2d-35.74004772413497!3d-9.649997801918888!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x701459696191d4f%3A0x9f5d48037211b8!2sTurbofrio%20Climatiza%C3%A7%C3%A3o!5e0!3m2!1spt-BR!2sbr!4v1750418866284!5m2!1spt-BR!2sbr"
+        width="600"
+        height="450"
+        style="border:0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
     </section>
   </div>
 </div>
@@ -53,8 +40,7 @@ import Form from "./form.astro"
     align-items: center;
     flex-direction: column;
 
-    border-radius: 12px;
-    gap: 32px;
+    border-radius: 16px;
     margin-inline: auto;
     max-width: 1040px;
     padding: 28px;
@@ -65,34 +51,6 @@ import Form from "./form.astro"
     font-weight: 700;
     line-height: 1;
     text-align: center;
-  }
-
-  p {
-    font-size: 0.875rem;
-    font-weight: 400;
-    line-height: 1.42;
-    text-align: center;
-
-    margin-top: 6px;
-  }
-
-  strong {
-    color: var(--sky-600);
-  }
-
-  em {
-    color: var(--sky-600);
-    font-weight: 600;
-    font-style: normal;
-  }
-
-  em:first-of-type {
-    color: var(--green-600);
-  }
-
-  .thematic-break {
-    background-color: var(--gray-200);
-    height: 1px;
   }
 
   address {
@@ -116,7 +74,7 @@ import Form from "./form.astro"
   }
 
   .map {
-    border-radius: 8px;
+    border-radius: 12px;
     margin-top: 16px;
     max-height: 411px;
     max-width: 459px;
@@ -128,18 +86,8 @@ import Form from "./form.astro"
       padding-block: 160px;
     }
 
-    section {
-      flex-direction: row;
-      align-items: center;
-    }
-
-    section > div {
-      flex: 1;
-    }
-
-    .thematic-break {
-      height: calc(588px - 28px * 2);
-      width: 1px;
+    .map {
+      max-width: 100%;
     }
   }
 </style>

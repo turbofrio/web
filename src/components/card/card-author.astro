@@ -14,7 +14,14 @@ const authorInitialLetters = author.replace(/[^A-Z]/g, "")
     {
       avatar !== "" ? (
         <span>
-          <img src={avatar} alt="" aria-hidden="true" height="46" width="46" />
+          <img
+            src={avatar}
+            alt=""
+            aria-hidden="true"
+            height="46"
+            width="46"
+            loading="lazy"
+          />
         </span>
       ) : (
         authorInitialLetters
